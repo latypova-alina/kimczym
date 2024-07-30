@@ -1,0 +1,10 @@
+/.bundle
+
+/log/*
+/tmp/*
+
+
+/public/assets
+/config/master.key
+.env
+.byebug_history
