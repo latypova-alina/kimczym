@@ -1,5 +1,6 @@
 en:
-  start:
-    content: Hi there! Please give a word
+  telegram_webhooks:
+    start:
+      content: Hi there! Please give a word
   errors:
     word_not_found: The word was not found :(
