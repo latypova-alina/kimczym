@@ -1,5 +1,5 @@
 module ApplicationHelper
-	def dynamodb
-		@dynamodb ||= DynamoDB.client
-	end
+  def dynamodb
+    @dynamodb ||= DynamoDb.client
+  end
 end

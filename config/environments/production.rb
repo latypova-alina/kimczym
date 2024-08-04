@@ -12,7 +12,7 @@ Rails.application.configure do
 
   config.log_level = :info
 
-  config.log_tags = [ :request_id ]
+  config.log_tags = [:request_id]
 
   config.i18n.fallbacks = true
 
@@ -21,10 +21,10 @@ Rails.application.configure do
   config.log_formatter = ::Logger::Formatter.new
 
   if ENV["RAILS_LOG_TO_STDOUT"].present?
-    logger           = ActiveSupport::Logger.new(STDOUT)
+    logger           = ActiveSupport::Logger.new($stdout)
     logger.formatter = config.log_formatter
     config.logger    = ActiveSupport::TaggedLogging.new(logger)
   end
 
-  config.telegram_updates_controller.session_store = :file_store, Rails.root.join('tmp', 'session_store')
+  config.telegram_updates_controller.session_store = :file_store, Rails.root.join("tmp", "session_store")
 end
