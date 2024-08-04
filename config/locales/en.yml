@@ -4,3 +4,13 @@ en:
       content: Hi there! Please give a word
   errors:
     word_not_found: The word was not found :(
+  subst:
+    pl: "Liczba mnoga"
+    sg: "Liczba pojedyncza"
+    nom: "Mianownik. Kogo/co?"
+    acc: "Biernik. Kogo/co?"
+    gen: "Dopełniacz. Kogo/czego?"
+    dat: "Celownik. Komu/czemu?"
+    inst: "Narzędnik. Z kim/z czym?"
+    loc: "Miejscownik. O kim/o czym?"
+    voc: "Wołacz. O!"
