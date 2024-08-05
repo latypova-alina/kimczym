@@ -2,7 +2,7 @@ module Words
   module Builders
     module Nouns
       class Base
-        NAME = :subst.freeze
+        NAME = :subst
 
         def self.call(*args)
           new(*args).call
@@ -15,7 +15,7 @@ module Words
 
         def call
           build_result
-          
+
           result
         end
 

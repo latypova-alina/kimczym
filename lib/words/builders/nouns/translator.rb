@@ -2,7 +2,6 @@ module Words
   module Builders
     module Nouns
       class Translator < Base
-
         private
 
         def build_result

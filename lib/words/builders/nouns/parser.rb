@@ -2,24 +2,31 @@ module Words
   module Builders
     module Nouns
       class Parser < Base
+        CLASSIC_CASES_ORDER = %w[nom gen dat acc inst loc voc].freeze
+        CLASSIC_NUMBERS_ORDER = %w[sg pl].freeze
 
         private
 
         def build_result
-          items.each do |item|
-            form_parts = item["form"].split(":")
-            word = item["word"]
-            
-            part_of_speech = form_parts[0].to_sym
-            number = form_parts[1].to_sym
-            cases = form_parts[2].split(".").map(&:to_sym)
+          result[NAME] ||= {}
 
-            cases.each do |grammatical_case|
-              result[part_of_speech] ||= {}
-              result[part_of_speech][number] ||= {}
-              result[part_of_speech][number][grammatical_case] = word
+          CLASSIC_NUMBERS_ORDER.each do |number|
+            result[NAME][number] ||= {}
+
+            CLASSIC_CASES_ORDER.each do |grammatical_case|
+              pattern = /\A#{NAME}:#{number}:.*\b#{grammatical_case}\b/
+
+              item = matching_item(pattern)
+
+              next unless item
+
+              result[NAME][number][grammatical_case] = item["word"]
             end
           end
+        end
+
+        def matching_item(pattern)
+          items.find { |item| item["form"].match?(pattern) }
         end
       end
     end
