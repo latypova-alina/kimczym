@@ -5,7 +5,7 @@ module Words
 
       BUILDER_CLASSES = {
         "subst" => Nouns::Builder
-      }
+      }.freeze
 
       def self.call(*args)
         new(*args).call
@@ -23,7 +23,7 @@ module Words
       private
 
       def filtered_items
-        items.select{ |item| item["form"].split(":")[0] == form_name }
+        items.select { |item| item["form"].split(":")[0] == form_name }
       end
 
       def form_name

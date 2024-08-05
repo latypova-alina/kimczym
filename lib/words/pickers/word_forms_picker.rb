@@ -3,16 +3,18 @@ module Words
     class WordFormsPicker
       include ApplicationHelper
 
-      def self.call(*args)
-        new(*args).call
-      end
-
       def initialize(base_word)
         @base_word = base_word
       end
 
-      def call
+      def word_forms_items
         db_items
+      end
+
+      def base_item
+        db_items
+          .select { |item| item["word"] == item["base"] }
+          .min_by { |item| -item["book_weight"] }
       end
 
       private
