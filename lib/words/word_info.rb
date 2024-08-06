@@ -9,7 +9,7 @@ module Words
     end
 
     def word_forms
-      "<strong>#{message_word.capitalize}</strong>\n#{formatted_word_forms['word_forms']}"
+      "<strong>#{message_word.capitalize}</strong>\n#{formatted_word_forms}"
     end
 
     def word_gif
