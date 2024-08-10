@@ -9,15 +9,16 @@ describe TelegramWebhooksController, telegram_bot: :rails do
 
   describe "#message" do
     let(:text) { "word" }
+    let(:word_info) { double("Words::WordInfo", word_forms: "Word forms", word_gif: "Word gif") }
 
-    before { allow(Words::Pickers::WordBasePicker).to receive(:call).with("word").and_return("Word forms") }
+    before { allow(Words::WordInfo).to receive(:new).with("word").and_return(word_info) }
 
     subject { -> { dispatch_message(text) } }
 
     it { should respond_with_message "Word forms" }
 
     context "when word is not found" do
-      before { allow(Words::Pickers::WordBasePicker).to receive(:call).and_raise(WordNotFoundError) }
+      before { allow(Words::WordInfo).to receive(:new).and_raise(WordNotFoundError) }
 
       it { should respond_with_message "The word was not found :(" }
     end

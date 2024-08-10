@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe Words::Pickers::WordBasePicker do
+describe Words::Pickers::WordBasePicker do
   let(:message) { "test_message" }
   let(:dynamodb) { instance_double(Aws::DynamoDB::Client) }
   let(:db_response) { instance_double(Aws::DynamoDB::Types::QueryOutput, items: db_items) }
