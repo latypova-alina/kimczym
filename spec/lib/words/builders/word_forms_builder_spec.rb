@@ -13,20 +13,27 @@ describe Words::Builders::WordFormsBuilder do
 
   describe "#call" do
     context 'when form_name is "subst"' do
-      before { allow_any_instance_of(Words::Builders::Nouns::Builder).to receive(:call).and_return("expected_result") }
+      before { allow(Words::Builders::Nouns::Builder).to receive(:call).and_return("expected_result") }
 
       it "calls the correct builder class with filtered items" do
         expect(subject).to eq("expected_result")
-        expect(Nouns::Builder).to have_received(:call).with([
-                                                              { "form" => "subst:sg:gen", "word" => "kota" }
-                                                            ])
+        expect(Words::Builders::Nouns::Builder).to have_received(:call).with([
+                                                                               { "form" => "subst:sg:gen",
+                                                                                 "word" => "kota" },
+                                                                               { "form" => "subst:pl:nom",
+                                                                                 "word" => "koty" }
+                                                                             ])
       end
     end
 
     context "when form_name is not in BUILDER_CLASSES" do
       let(:base_item) { { "form" => "unknown:sg:gen" } }
 
-      it { is_expected.to raise_error(KeyError) }
+      before { allow(described_class).to receive(:call).and_raise(WordNotFoundError) }
+
+      it "raises WordNotFoundError if form is not identified" do
+        expect { subject }.to raise_error(WordNotFoundError)
+      end
     end
   end
 end
