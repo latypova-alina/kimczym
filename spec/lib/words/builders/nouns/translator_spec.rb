@@ -10,35 +10,13 @@ describe Words::Builders::Nouns::Translator do
     }
   end
 
-  let(:translations) do
-    {
-      subst: {
-        sg: "Singular",
-        pl: "Plural",
-        nom: "Nominative",
-        gen: "Genitive"
-      }
-    }
-  end
-
-  before do
-    I18n.backend = I18n::Backend::KeyValue.new({}, true)
-    I18n.backend.store_translations(:en, translations)
-  end
-
   subject { described_class.call(items) }
 
   describe "#call" do
     let(:expected_result) do
       {
-        "Singular" => {
-          "Nominative" => "kot",
-          "Genitive" => "kota"
-        },
-        "Plural" => {
-          "Nominative" => "koty",
-          "Genitive" => "kotów"
-        }
+        "Liczba mnoga" => { "Dopełniacz (kogo? czego?)" => "kotów", "Mianownik (kto? co?)" => "koty" },
+        "Liczba pojedyncza" => { "Dopełniacz (kogo? czego?)" => "kota", "Mianownik (kto? co?)" => "kot" }
       }
     end
 

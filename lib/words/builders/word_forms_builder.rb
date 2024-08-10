@@ -1,8 +1,6 @@
 module Words
   module Builders
     class WordFormsBuilder
-      include ApplicationHelper
-
       BUILDER_CLASSES = {
         "subst" => Nouns::Builder
       }.freeze
@@ -17,6 +15,8 @@ module Words
       end
 
       def call
+        raise ::WordNotFoundError if BUILDER_CLASSES[form_name].nil?
+
         BUILDER_CLASSES[form_name].call(filtered_items)
       end
 

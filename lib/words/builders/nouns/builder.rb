@@ -2,8 +2,6 @@ module Words
   module Builders
     module Nouns
       class Builder
-        include ApplicationHelper
-
         def self.call(*args)
           new(*args).call
         end

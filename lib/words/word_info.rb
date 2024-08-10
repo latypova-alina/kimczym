@@ -1,7 +1,5 @@
 module Words
   class WordInfo
-    include ApplicationHelper
-
     delegate :base_item, :word_forms_items, to: :word_forms_picker
 
     def initialize(message_word)
