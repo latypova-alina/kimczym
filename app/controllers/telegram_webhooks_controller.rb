@@ -6,10 +6,7 @@ class TelegramWebhooksController < Telegram::Bot::UpdatesController
   end
 
   def message(message)
-    word_info = Words::WordInfo.new(message["text"].downcase)
-
-    respond_with :message, parse_mode: "HTML", text: word_info.word_forms
-    respond_with :document, document: word_info.word_gif if word_info.word_gif
+    respond_with :message, text: Words::Pickers::WordBasePicker.call(message["text"])
   rescue WordNotFoundError
     respond_with :message, text: ErrorHandlers::WordNotFoundHandler.text
     respond_with :document, document: ErrorHandlers::WordNotFoundHandler.image
