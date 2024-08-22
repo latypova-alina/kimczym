@@ -4,9 +4,15 @@ en:
       content: Hi there! Please give a word
   errors:
     word_not_found: The word was not found :(
-  subst:
+  shared:
     pl: "Liczba mnoga"
     sg: "Liczba pojedyncza"
+    m1: "Męski osobowy (nauczyciel)"
+    m2: "Męski nieosobowy (kot)"
+    m3: "Męski nieżywotny (kwiat)"
+    f: "Żeński (koleżanka)"
+    n: "Nijaki (okno)"
+  subst:
     nom: "Mianownik (kto? co?)"
     acc: "Biernik (kogo? co?)"
     gen: "Dopełniacz (kogo? czego?)"
@@ -14,3 +20,49 @@ en:
     inst: "Narzędnik (z kim? z czym?)"
     loc: "Miejscownik (o kim? o czym?)"
     voc: "Wołacz (o! hej!)"
+  adj:
+    pos: "Równy"
+    com: "Wyższy"
+    sup: "Najwyższy"
+    sg:
+      m1_m2_m3:
+        nom: "Mianownik (jaki?)"
+        acc: "Biernik (jaki?)"
+        gen: "Dopełniacz (jakiego?)"
+        dat: "Celownik (jakiemu?)"
+        inst: "Narzędnik (z jakim?)"
+        loc: "Miejscownik (o jakim?)"
+        voc: "Wołacz (jaki?)"
+      f:
+        nom: "Mianownik (jaka?)"
+        acc: "Biernik (jaką?)"
+        gen: "Dopełniacz (jakiej?)"
+        dat: "Celownik (jakiej?)"
+        inst: "Narzędnik (z jaką?)"
+        loc: "Miejscownik (o jakiej?)"
+        voc: "Wołacz (jaka?)"
+      n:
+        nom: "Mianownik (jakie?)"
+        acc: "Biernik (jakie?)"
+        gen: "Dopełniacz (jakiego?)"
+        dat: "Celownik (jakiemu?)"
+        inst: "Narzędnik (z jakim?)"
+        loc: "Miejscownik (o jakim?)"
+        voc: "Wołacz (jakie?)"
+    pl:
+      m1:
+        nom: "Mianownik (jacy?)"
+        acc: "Biernik (jakich?)"
+        gen: "Dopełniacz (jakich?)"
+        dat: "Celownik (jakim?)"
+        inst: "Narzędnik (z jakimi?)"
+        loc: "Miejscownik (o jakich?)"
+        voc: "Wołacz (jacy?)"
+      m2_m3_f_n:
+        nom: "Mianownik (jakie?)"
+        acc: "Biernik (jakie?)"
+        gen: "Dopełniacz (jakich?)"
+        dat: "Celownik (jakim?)"
+        inst: "Narzędnik (z jakimi?)"
+        loc: "Miejscownik (o jakich?)"
+        voc: "Wołacz (jakie?)"

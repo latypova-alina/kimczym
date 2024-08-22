@@ -2,7 +2,8 @@ module Words
   module Builders
     class WordFormsBuilder
       BUILDER_CLASSES = {
-        "subst" => Nouns::Builder
+        "subst" => Nouns::Builder,
+        "adj" => Adjectives::Builder
       }.freeze
 
       def self.call(*args)

@@ -6,8 +6,12 @@ module Words
       @message_word = message_word
     end
 
+    def main_word
+      "<strong>#{message_word.capitalize}</strong>\n"
+    end
+
     def word_forms
-      "<strong>#{message_word.capitalize}</strong>\n#{formatted_word_forms}"
+      formatted_word_forms
     end
 
     def word_gif
