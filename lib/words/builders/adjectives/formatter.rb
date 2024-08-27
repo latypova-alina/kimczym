@@ -2,25 +2,36 @@ module Words
   module Builders
     module Adjectives
       class Formatter < Base
+        DEFAULT_MESSAGE = {
+          gender: "m1",
+          number: "sg",
+          degree: "pos"
+        }
+
+
         def initialize(items)
           super(items)
+          @result = items
         end
 
         private
 
         def build_result
-          items.each do |degree, numbers|
-            result[degree] ||= ""
-            result[degree] << "\n<strong>#{degree}</strong>\n\n" unless numbers.blank?
-            
-            numbers.each do |number, genders|
-              result[degree] << "\n<strong>#{number}</strong>\n" unless genders.blank?
+          result.each do |button_key, info|
+            result[button_key]["formatted_text"] ||= ""
 
-              genders.each do |gender, grammatical_cases|
-                result[degree] << "\n<strong>#{gender}</strong>\n" unless grammatical_cases.blank?
-
-                grammatical_cases.each do |grammatical_case, word|
-                  result[degree] << "<strong>#{grammatical_case}</strong> #{word}\n"
+            info["text"].each do |degree, numbers|
+              result[button_key]["formatted_text"] << "\n<strong>#{degree}</strong>\n\n" unless numbers.blank?
+              
+              numbers.each do |number, genders|
+                result[button_key]["formatted_text"] << "\n<strong>#{number}</strong>\n" unless genders.blank?
+              
+                genders.each do |gender, grammatical_cases|
+                  result[button_key]["formatted_text"] << "\n<strong>#{gender}</strong>\n" unless grammatical_cases.blank?
+              
+                  grammatical_cases.each do |grammatical_case, word|
+                    result[button_key]["formatted_text"] << "<strong>#{grammatical_case}</strong> #{word}\n"
+                  end
                 end
               end
             end

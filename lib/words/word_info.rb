@@ -10,8 +10,20 @@ module Words
       "<strong>#{message_word.capitalize}</strong>\n"
     end
 
-    def word_forms
-      formatted_word_forms
+    def word_forms(button_key)
+      formatted_word_forms[button_key]["formatted_text"]
+    end
+
+    def word_buttons(button_key)
+      formatted_word_forms[button_key]["buttons"]
+    end
+
+    def default_word_forms
+      formatted_word_forms.first[1]["formatted_text"]
+    end
+
+    def default_word_buttons
+      formatted_word_forms.first[1]["buttons"]
     end
 
     def word_gif

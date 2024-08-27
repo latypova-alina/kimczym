@@ -8,10 +8,31 @@ class TelegramWebhooksController < Telegram::Bot::UpdatesController
   def message(message)
     word_info = Words::WordInfo.new(message["text"].downcase)
 
-    respond_with :message, parse_mode: "HTML", text: word_info.word_forms
+    session[:word_info] = word_info
+
+    respond_with :message, parse_mode: "HTML", text: word_info.default_word_forms, reply_markup: {
+      inline_keyboard: word_info.default_word_buttons.map do |category, values|
+        values.map do |value|
+          { text: value, callback_data: value }
+        end
+      end
+    }
     respond_with :document, document: word_info.word_gif if word_info.word_gif
   rescue WordNotFoundError
     respond_with :message, text: ErrorHandlers::WordNotFoundHandler.text
     respond_with :document, document: ErrorHandlers::WordNotFoundHandler.image
+  end
+
+  def callback_query(data)
+    word_info = session[:word_info] || Words::WordInfo.new(message["text"].downcase)
+
+    respond_with :message, parse_mode: "HTML", text: word_info.word_forms(data), reply_markup: {
+      inline_keyboard: word_info.word_buttons(data).map do |category, values|
+        values.map do |value|
+          { text: value, callback_data: value }
+        end
+      end
+    }
+    respond_with :document, document: word_info.word_gif if word_info.word_gif
   end
 end

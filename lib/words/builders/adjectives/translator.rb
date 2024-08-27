@@ -19,28 +19,48 @@ module Words
           }
         }.freeze
 
+        BUTTON_GENDER = {
+          "m1" => "m1",
+          "m2" => "m1",
+          "m3" => "m1",
+          "f" => "f",
+          "n" => "n"
+        }
+
+        def initialize(items, buttons)
+          @items = items
+          @result = buttons
+        end
+
         private
 
         def build_result
-          items[NAME].each do |degree, numbers|
+          items.each do |degree, numbers|
             degree_translation = I18n.t("#{NAME}.#{degree}")
-            result[degree_translation] ||= {}
 
             numbers.each do |number, genders|
               number_translation = I18n.t("shared.#{number}")
-              result[degree_translation][number_translation] ||= {}
 
               genders.each do |gender, grammatical_cases|
                 gender_translation = I18n.t("shared.#{gender}")
-                result[degree_translation][number_translation][gender_translation] ||= {}
 
                 grammatical_cases.each do |grammatical_case, word|
                   case_translation = I18n.t("#{NAME}.#{number}.#{GENDER_KEYS[number][gender]}.#{grammatical_case}")
-                  result[degree_translation][number_translation][gender_translation][case_translation] = word
+                  key_for_button = button_key(degree, number, gender)
+
+                  result[key_for_button]["text"] ||= {}
+                  result[key_for_button]["text"][degree_translation] ||= {}
+                  result[key_for_button]["text"][degree_translation][number_translation] ||= {}
+                  result[key_for_button]["text"][degree_translation][number_translation][gender_translation] ||= {}
+                  result[key_for_button]["text"][degree_translation][number_translation][gender_translation][case_translation] = word 
                 end
               end
             end
           end
+        end
+
+        def button_key(degree, number, gender)
+          "#{number}.#{BUTTON_GENDER[gender]}.#{degree}"
         end
       end
     end

@@ -2,6 +2,8 @@ module Words
   module Builders
     module Adjectives
       class Base
+        include Words::Builders::Adjectives::Constants
+        
         NAME = :adj
 
         def self.call(*args)
@@ -17,6 +19,10 @@ module Words
           build_result
 
           result
+        end
+
+        def default_formatted_text
+          result[DEFAULT_BUTTON_KEY]["formatted_text"]
         end
 
         private

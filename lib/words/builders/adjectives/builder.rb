@@ -12,7 +12,8 @@ module Words
 
         def call
           parsed_items = Parser.call(items)
-          translated_items = Translator.call(parsed_items)
+          parsed_buttons = ButtonsParser.call(parsed_items)
+          translated_items = Translator.call(parsed_items, parsed_buttons)
           Formatter.call(translated_items)
         end
 

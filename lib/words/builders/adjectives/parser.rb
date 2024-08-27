@@ -9,20 +9,18 @@ module Words
 
         private
 
-        def build_result
-          result[NAME] ||= {}
-          
+        def build_result          
           CLASSIC_DEGREE_ORDER.each do |degree|
-            result[NAME][degree] ||= {}
+            result[degree] ||= {}
           
             CLASSIC_NUMBERS_ORDER.each do |number|
-              result[NAME][degree][number] ||= {}
+              result[degree][number] ||= {}
           
               CLASSIC_GENDER_ORDER.each do |gender|
-                result[NAME][degree][number][gender] ||= {}
+                result[degree][number][gender] ||= {}
           
                 CLASSIC_CASES_ORDER.each do |grammatical_case|
-                  result[NAME][degree][number][gender][grammatical_case] ||= {}
+                  result[degree][number][gender][grammatical_case] ||= {}
 
                   pattern = /\A#{NAME}:.*\b#{number}\b.*:.*\b#{grammatical_case}\b.*:.*\b#{gender}\b.*:.*\b#{degree}\b/
 
@@ -30,7 +28,7 @@ module Words
 
                   next unless item
 
-                  result[NAME][degree][number][gender][grammatical_case] = item["word"]
+                  result[degree][number][gender][grammatical_case] = item["word"]
                 end
               end
             end
