@@ -25,7 +25,7 @@ module Words
           "m3" => "m1",
           "f" => "f",
           "n" => "n"
-        }
+        }.freeze
 
         def initialize(items, buttons)
           @items = items
@@ -52,7 +52,8 @@ module Words
                   result[key_for_button]["text"][degree_translation] ||= {}
                   result[key_for_button]["text"][degree_translation][number_translation] ||= {}
                   result[key_for_button]["text"][degree_translation][number_translation][gender_translation] ||= {}
-                  result[key_for_button]["text"][degree_translation][number_translation][gender_translation][case_translation] = word 
+                  result[key_for_button]["text"][degree_translation][number_translation][gender_translation][case_translation] =
+                    word
                 end
               end
             end

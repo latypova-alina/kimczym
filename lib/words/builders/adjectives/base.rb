@@ -3,7 +3,7 @@ module Words
     module Adjectives
       class Base
         include Words::Builders::Adjectives::Constants
-        
+
         NAME = :adj
 
         def self.call(*args)
