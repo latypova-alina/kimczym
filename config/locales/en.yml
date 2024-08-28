@@ -7,11 +7,11 @@ en:
   shared:
     pl: "Liczba mnoga"
     sg: "Liczba pojedyncza"
-    m1: "Męski osobowy (nauczyciel)"
-    m2: "Męski nieosobowy (kot)"
-    m3: "Męski nieżywotny (kwiat)"
-    f: "Żeński (koleżanka)"
-    n: "Nijaki (okno)"
+    m1: "Rodzaj męski osobowy (brat)"
+    m2: "Rodzaj męski nieosobowy (kot)"
+    m3: "Rodzaj męski nieżywotny (kwiat)"
+    f: "Rodzaj żeński (koleżanka)"
+    n: "Rodzaj nijaki (okno)"
   subst:
     nom: "Mianownik (kto? co?)"
     acc: "Biernik (kogo? co?)"
@@ -21,9 +21,23 @@ en:
     loc: "Miejscownik (o kim? o czym?)"
     voc: "Wołacz (o! hej!)"
   adj:
-    pos: "Równy"
-    com: "Wyższy"
-    sup: "Najwyższy"
+    pos: "Stopień równy"
+    com: "Stopień wyższy"
+    sup: "Stopień najwyższy"
+    buttons:
+      number:
+        pl: "Liczba mnoga"
+        sg: "Liczba pojedyncza"
+      gender:
+        m1: "Rodzaj męski osobowy (brat)"
+        m2: "Rodzaj męski nieosobowy (kot)"
+        m3: "Rodzaj Męski nieżywotny (kwiat)"
+        f: "Rodzaj żeński (koleżanka)"
+        n: "Rodzaj nijaki (okno)"
+      degree: 
+        pos: "Stopień równy"
+        com: "Stopień wyższy"
+        sup: "Stopień najwyższy"
     sg:
       m1_m2_m3:
         nom: "Mianownik (jaki?)"
