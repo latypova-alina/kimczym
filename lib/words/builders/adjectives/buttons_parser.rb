@@ -2,40 +2,39 @@ module Words
   module Builders
     module Adjectives
       class ButtonsParser < Base
-        BUTTON_KEYS_MATCHERS = {
-          "number" => "pl|sg",
-          "gender" => "m1|m2|m3|f|n",
-          "degree" => "pos|com|sup"
-        }.freeze
 
-        MAIN_KEY_NAME = "buttons".freeze
+        def initialize(degree, number, gender)
+          @degree = degree
+          @number = number
+          @gender = gender
+        end
+
+        def call
+          button_gender = BUTTON_GENDER[gender]
+          key_name = [number, button_gender, degree].join(".")
+          button = BUTTONS[key_name]
+          OpenStruct.new(
+            number: button["number"].map{|button_key| OpenStruct.new(parse_button("number", button_key)) },
+            gender: button["gender"].map{|button_key| OpenStruct.new(parse_button("gender", button_key)) },
+            degree: button["degree"].map{|button_key| OpenStruct.new(parse_button("degree", button_key)) },
+            key_name: key_name #must be level up
+          )
+        end
 
         private
 
-        def build_result
-          BUTTONS.each do |button_key, info|
-            info.each do |category, values|
-              result[button_key] ||= {}
-              result[button_key][MAIN_KEY_NAME] ||= {}
-              result[button_key][MAIN_KEY_NAME][category] ||= []
-
-              values.each do |key_name|
-                result[button_key][MAIN_KEY_NAME][category] << {
-                  key_name:,
-                  translation: translated_button(category, key_name)
-                }
-              end
-            end
-          end
+        def parse_button(category, button_key)
+          stripped_button = button_key.split(".")
+          { 
+            number: stripped_button[0],
+            gender: stripped_button[1],
+            degree: stripped_button[2],
+            translation: ButtonTranslator.call(category, button_key),
+            key_name: button_key
+          }
         end
 
-        def translated_button(category, key_name)
-          I18n.t([NAME, MAIN_KEY_NAME, category, button_key_match(category, key_name)].join("."))
-        end
-
-        def button_key_match(category, key_name)
-          key_name.match(/#{BUTTON_KEYS_MATCHERS[category]}/).to_s
-        end
+        attr_reader :degree, :number, :gender
       end
     end
   end

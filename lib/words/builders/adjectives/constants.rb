@@ -2,6 +2,44 @@ module Words
   module Builders
     module Adjectives
       module Constants
+        CLASSIC_DEGREE_ORDER = %w[pos com sup].freeze
+        CLASSIC_CASES_ORDER = %w[nom gen dat acc inst loc voc].freeze
+        CLASSIC_GENDER_ORDER = %w[m1 m2 m3 f n].freeze
+        CLASSIC_NUMBERS_ORDER = %w[sg pl].freeze
+
+        GENDER_TRANSLATION_KEYS = {
+          "sg" => {
+            "m1" => "m1_m2_m3",
+            "m2" => "m1_m2_m3",
+            "m3" => "m1_m2_m3",
+            "f" => "f",
+            "n" => "n"
+          },
+          "pl" => {
+            "m1" => "m1",
+            "m2" => "m2_m3_f_n",
+            "m3" => "m2_m3_f_n",
+            "f" => "m2_m3_f_n",
+            "n" => "m2_m3_f_n"
+          }
+        }.freeze
+
+        BUTTON_GENDER = {
+          "m1" => "m1",
+          "m2" => "m1",
+          "m3" => "m1",
+          "f" => "f",
+          "n" => "n"
+        }
+
+        BUTTON_KEYS_MATCHERS = {
+          "number" => "pl|sg",
+          "gender" => "m1|m2|m3|f|n",
+          "degree" => "pos|com|sup"
+        }.freeze
+
+        NAME = "adj"
+
         DEFAULT_BUTTON_KEY = "sg.m1.pos".freeze
 
         BUTTONS = {

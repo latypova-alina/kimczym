@@ -2,36 +2,19 @@ module Words
   module Builders
     module Adjectives
       class Formatter < Base
-        def initialize(items)
-          super(items)
-          @result = items
+
+        def initialize(item)
+          @item = item
+        end
+
+        def call
+          "<strong>#{item.degree.translation} / #{item.number.translation} / #{item.gender.translation}</strong>\n\n" <<
+          item.cases.map{ |grammatical_case| "<strong>#{grammatical_case.translation}</strong> #{grammatical_case.value}" }.join("\n")
         end
 
         private
 
-        def build_result
-          result.each do |button_key, info|
-            result[button_key]["formatted_text"] ||= ""
-
-            info["text"].each do |degree, numbers|
-              result[button_key]["formatted_text"] << "\n<strong>#{degree}</strong>\n" unless numbers.blank?
-
-              numbers.each do |number, genders|
-                result[button_key]["formatted_text"] << "\n<strong>#{number}</strong>\n" unless genders.blank?
-
-                genders.each do |gender, grammatical_cases|
-                  unless grammatical_cases.blank?
-                    result[button_key]["formatted_text"] << "\n<strong>#{gender}</strong>\n\n"
-                  end
-
-                  grammatical_cases.each do |grammatical_case, word|
-                    result[button_key]["formatted_text"] << "<strong>#{grammatical_case}</strong> #{word}\n"
-                  end
-                end
-              end
-            end
-          end
-        end
+        attr_reader :item
       end
     end
   end

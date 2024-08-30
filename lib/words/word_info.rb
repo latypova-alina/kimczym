@@ -11,19 +11,20 @@ module Words
     end
 
     def word_forms(button_key)
-      formatted_word_forms[button_key]["formatted_text"]
+      byebug
+      formatted_word_forms
     end
 
     def word_buttons(button_key)
-      formatted_word_forms[button_key]["buttons"]
+      formatted_word_forms
     end
 
     def default_word_forms
-      formatted_word_forms.first[1]["formatted_text"]
+      formatted_word_forms.first.formatted_text
     end
 
     def default_word_buttons
-      formatted_word_forms.first[1]["buttons"]
+      formatted_word_forms.first.buttons
     end
 
     def word_gif
