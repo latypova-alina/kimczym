@@ -2,8 +2,8 @@ module Words
   module Builders
     module Adjectives
       class SearchWord < Base
-
         def initialize(degree, number, gender, grammatical_case, items)
+          super()
           @degree = degree
           @number = number
           @gender = gender

@@ -2,6 +2,7 @@ module Words
   module Builders
     module Adjectives
       class Base
+        include ApplicationHelper
         include Words::Builders::Adjectives::Constants
 
         def self.call(*args)

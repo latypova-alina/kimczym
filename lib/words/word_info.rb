@@ -1,5 +1,7 @@
 module Words
   class WordInfo
+    include ApplicationHelper
+
     delegate :base_item, :word_forms_items, to: :word_forms_picker
 
     def initialize(message_word)
@@ -11,12 +13,11 @@ module Words
     end
 
     def word_forms(button_key)
-      byebug
-      formatted_word_forms
+      item(button_key).formatted_text
     end
 
     def word_buttons(button_key)
-      formatted_word_forms
+      item(button_key).buttons
     end
 
     def default_word_forms
@@ -32,6 +33,10 @@ module Words
     end
 
     private
+
+    def item(button_key)
+      @item ||= find_item(formatted_word_forms, button_key)
+    end
 
     def formatted_word_forms
       Builders::WordFormsBuilder.call(base_item, word_forms_items)

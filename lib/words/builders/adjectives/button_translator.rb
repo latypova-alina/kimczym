@@ -2,8 +2,8 @@ module Words
   module Builders
     module Adjectives
       class ButtonTranslator < Base
-
         def initialize(category, button_key)
+          super()
           @category = category
           @button_key = button_key
         end

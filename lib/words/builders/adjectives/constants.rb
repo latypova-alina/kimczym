@@ -7,6 +7,8 @@ module Words
         CLASSIC_GENDER_ORDER = %w[m1 m2 m3 f n].freeze
         CLASSIC_NUMBERS_ORDER = %w[sg pl].freeze
 
+        BUTTONS_CATEGORIES = %w[number gender degree].freeze
+
         GENDER_TRANSLATION_KEYS = {
           "sg" => {
             "m1" => "m1_m2_m3",
@@ -30,7 +32,16 @@ module Words
           "m3" => "m1",
           "f" => "f",
           "n" => "n"
-        }
+        }.freeze
+
+        JOIN_CONTENTS = {
+          "sg.m1.pos" => ["sg.m1.pos", "sg.m2.pos", "sg.m3.pos"],
+          "sg.m1.com" => ["sg.m1.com", "sg.m2.com", "sg.m3.com"],
+          "sg.m1.sup" => ["sg.m1.sup", "sg.m2.sup", "sg.m3.sup"],
+          "pl.m1.pos" => ["pl.m1.pos", "pl.m2.pos", "pl.m3.pos"],
+          "pl.m1.com" => ["pl.m1.com", "pl.m2.com", "pl.m3.com"],
+          "pl.m1.sup" => ["pl.m1.sup", "pl.m2.sup", "pl.m3.sup"]
+        }.freeze
 
         BUTTON_KEYS_MATCHERS = {
           "number" => "pl|sg",
@@ -38,7 +49,7 @@ module Words
           "degree" => "pos|com|sup"
         }.freeze
 
-        NAME = "adj"
+        NAME = "adj".freeze
 
         DEFAULT_BUTTON_KEY = "sg.m1.pos".freeze
 

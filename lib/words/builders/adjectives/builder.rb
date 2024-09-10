@@ -3,6 +3,7 @@ module Words
     module Adjectives
       class Builder < Base
         def initialize(items)
+          super()
           @items = items
           @result = []
         end
@@ -33,7 +34,7 @@ module Words
             end
           end
 
-          result.each { |item| item.formatted_text = Formatter.call(item) }
+          result.each { |item| item.formatted_text = Formatter.call(result, item) }
         end
 
         def matching_parsed_item(degree, number, gender)

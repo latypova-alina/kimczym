@@ -4,14 +4,15 @@ en:
       content: Hi there! Please give a word
   errors:
     word_not_found: The word was not found :(
+    forgotten_word: Please provide the word first
   shared:
     pl: "Liczba mnoga"
     sg: "Liczba pojedyncza"
-    m1: "Rodzaj męski osobowy (brat)"
-    m2: "Rodzaj męski nieosobowy (kot)"
-    m3: "Rodzaj męski nieżywotny (kwiat)"
-    f: "Rodzaj żeński (koleżanka)"
-    n: "Rodzaj nijaki (okno)"
+    m1: "Rodzaj męski osobowy"
+    m2: "Rodzaj męski nieosobowy"
+    m3: "Rodzaj męski nieżywotny"
+    f: "Rodzaj żeński"
+    n: "Rodzaj nijaki"
   subst:
     nom: "Mianownik (kto? co?)"
     acc: "Biernik (kogo? co?)"
@@ -29,11 +30,11 @@ en:
         pl: "Liczba mnoga"
         sg: "Liczba pojedyncza"
       gender:
-        m1: "Rodzaj męski osobowy (brat)"
-        m2: "Rodzaj męski nieosobowy (kot)"
-        m3: "Rodzaj Męski nieżywotny (kwiat)"
-        f: "Rodzaj żeński (koleżanka)"
-        n: "Rodzaj nijaki (okno)"
+        m1: "Rodzaj męski"
+        m2: "Rodzaj męski"
+        m3: "Rodzaj męski"
+        f: "Rodzaj żeński"
+        n: "Rodzaj nijaki"
       degree: 
         pos: "Stopień równy"
         com: "Stopień wyższy"

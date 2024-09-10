@@ -2,8 +2,8 @@ module Words
   module Builders
     module Adjectives
       class CaseParser < Base
-
         def initialize(word, number, gender, grammatical_case)
+          super()
           @word = word
           @number = number
           @gender = gender
