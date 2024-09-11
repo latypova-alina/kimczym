@@ -23,7 +23,7 @@ class TelegramWebhooksController < Telegram::Bot::UpdatesController
   end
 
   def callback_query(data)
-    word_info = session[:word_info]
+    word_info = session[:word_info] || raise(::WordForgottenError)
 
     respond_with :message, parse_mode: "HTML", text: word_info.word_forms(data), reply_markup: {
       inline_keyboard: word_info.word_buttons(data).categories.map do |category|
@@ -32,7 +32,10 @@ class TelegramWebhooksController < Telegram::Bot::UpdatesController
         end
       end
     }
-  rescue StandardError
+  rescue WordNotFoundError
+    respond_with :message, text: ErrorHandlers::WordNotFoundHandler.text
+    respond_with :document, document: ErrorHandlers::WordNotFoundHandler.image
+  rescue WordForgottenError
     respond_with :message, text: ErrorHandlers::ForgottenWordHandler.text
   end
 end

@@ -13,10 +13,12 @@ module Words
     end
 
     def word_forms(button_key)
+      raise ::WordNotFoundError if item(button_key).nil?
       item(button_key).formatted_text
     end
 
     def word_buttons(button_key)
+      raise ::WordNotFoundError if item(button_key).nil?
       item(button_key).buttons
     end
 
@@ -35,7 +37,7 @@ module Words
     private
 
     def item(button_key)
-      @item ||= find_item(formatted_word_forms, button_key)
+      find_item(formatted_word_forms, button_key)
     end
 
     def formatted_word_forms
