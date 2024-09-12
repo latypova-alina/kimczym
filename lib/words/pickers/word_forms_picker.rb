@@ -14,7 +14,7 @@ module Words
       def base_item
         db_items
           .select { |item| item["word"] == item["base"] }
-          .min_by { |item| -item["book_weight"] }
+          .max_by { |item| item["book_weight"] }
       end
 
       private

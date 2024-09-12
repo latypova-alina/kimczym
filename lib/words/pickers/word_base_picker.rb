@@ -20,7 +20,7 @@ module Words
       private
 
       def base_item
-        db_items.min_by { |item| -item["book_weight"] }
+        db_items.max_by { |item| item["book_weight"] }
       end
 
       def db_items
