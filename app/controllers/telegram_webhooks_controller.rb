@@ -6,16 +6,10 @@ class TelegramWebhooksController < Telegram::Bot::UpdatesController
   end
 
   def message(message)
-    word_info = Words::WordInfo.new(message["text"].downcase)
+    word_info =  Word::Info::Constructor.call(message:)
     session[:word_info] = word_info
 
-    respond_with :message, parse_mode: "HTML", text: word_info.default_word_forms, reply_markup: {
-      inline_keyboard: word_info.default_word_buttons.categories.map do |category|
-        word_info.default_word_buttons.send(category).map do |button|
-          { text: button.translation, callback_data: button.key_name }
-        end
-      end
-    }
+    respond_with :message, Presenters::MessagePresenter.call(word_info)
     respond_with :document, document: word_info.word_gif if word_info.word_gif
   rescue WordNotFoundError
     respond_with :message, text: ErrorHandlers::WordNotFoundHandler.text
