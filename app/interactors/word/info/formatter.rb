@@ -1,9 +1,9 @@
 module Word
-	module Info
-		class Formatter < Base
+  module Info
+    class Formatter < Base
       FORMATTER_CLASSES = { "adj" => Adjective::Formatter }.freeze
 
-			def call
+      def call
         super()
         corresponding_class.call(processed_items:)
       end
@@ -13,6 +13,6 @@ module Word
       def corresponding_class
         FORMATTER_CLASSES[form_name]
       end
-		end
-	end
+    end
+  end
 end

@@ -1,13 +1,13 @@
 module Word
-	module Info
-		class Base
-			include Interactor
+  module Info
+    class Base
+      include Interactor
 
-			delegate :base_item, :items, :processed_items, :form_name, to: :context
+      delegate :base_item, :items, :processed_items, :form_name, to: :context
 
-			def call
+      def call
         set_params
-				context.fail! if corresponding_class.nil?
+        context.fail! if corresponding_class.nil?
       end
 
       private
@@ -20,6 +20,6 @@ module Word
         context.form_name ||= base_item["form"].split(":")[0]
         context.processed_items ||= []
       end
-		end
-	end
+    end
+  end
 end

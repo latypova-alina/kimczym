@@ -7,7 +7,7 @@ module Word
             delegate :category, :key_name, to: :context
 
             def call
-              I18n.t([NAME, "buttons", category, button_key_match].join("."))
+              context.text = I18n.t([NAME, "buttons", category, button_key_match].join("."))
             end
 
             private

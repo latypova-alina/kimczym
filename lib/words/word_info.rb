@@ -14,11 +14,13 @@ module Words
 
     def word_forms(button_key)
       raise ::WordNotFoundError if item(button_key).nil?
+
       item(button_key).formatted_text
     end
 
     def word_buttons(button_key)
       raise ::WordNotFoundError if item(button_key).nil?
+
       item(button_key).buttons
     end
 

@@ -7,10 +7,10 @@ module Word
             delegate :number, :gender, :degree, to: :context
 
             def call
-              OpenStruct.new(
-                number: button["number"].map { |button_key| OpenStruct.new(parse_button("number", button_key)) },
-                gender: button["gender"].map { |button_key| OpenStruct.new(parse_button("gender", button_key)) },
-                degree: button["degree"].map { |button_key| OpenStruct.new(parse_button("degree", button_key)) },
+              context.buttons = OpenStruct.new(
+                number: parsed_buttons("number"),
+                gender: parsed_buttons("gender"),
+                degree: parsed_buttons("degree"),
                 key_name:,
                 categories: BUTTONS_CATEGORIES
               )
@@ -18,15 +18,8 @@ module Word
 
             private
 
-            def parse_button(category, button_key)
-              {
-                key_name: button_key,
-                translation: Translator.call(category:, key_name:)
-              }
-            end
-
-            def button
-              @button ||= BUTTONS[key_name]
+            def parsed_buttons(category)
+              CategoryButtonsParser.call(key_name:, category:).parsed_buttons
             end
 
             def key_name

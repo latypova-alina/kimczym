@@ -1,11 +1,12 @@
 module Word
   module Info
-  	module Picker
-  		class Items
-        include Interactor, WordInfoHelper
+    module Picker
+      class Items
+        include WordInfoHelper
+        include Interactor
 
         delegate :initial_word, to: :context
-        
+
         def call
           context.items = retrieve_db_items
         end
@@ -21,7 +22,7 @@ module Word
             expression_attribute_values: { ":message" => initial_word }
           ).items
         end
-  		end
-  	end
+      end
+    end
   end
 end

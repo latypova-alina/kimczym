@@ -4,35 +4,48 @@ module Word
       module Parse
         module GrammaticalCases
           class CasesParser < Word::Info::Adjective::Base
-            delegate :items, :degree, :number, :gender, :processed_items, to: :context
+            delegate :items, :degree, :number, :gender, :processed_items, :grammatical_case, to: :context
 
             def call
-              CLASSIC_CASES_ORDER.each { |grammatical_case| process_case(grammatical_case) }
+              return unless word
+
+              CaseWriter.call(item: find_or_create_parsed_item, parsed_case:)
             end
 
             private
 
-            def process_case(grammatical_case)
-              word = MatchingWord.call(degree:, number:, gender:, grammatical_case:, items:).word
-              return unless word
+            def add_case_to_item(item)
+              item.cases ||= []
+              item.cases << parsed_case
+            end
 
-              find_or_create_parsed_item.tap do |item|
-                item.cases ||= []
-                item.cases << CaseParser.call(word:, number:, gender:, grammatical_case:).processed_word
-              end
+            def parsed_case
+              CaseParser.call(
+                word:, 
+                number:, 
+                gender:, 
+                grammatical_case:
+              ).processed_word
+            end
+
+            def word
+              @word ||= MatchingWord.call(
+                degree:, 
+                number:, 
+                gender:, 
+                grammatical_case:, 
+                items:
+              ).word
             end
 
             def find_or_create_parsed_item
-              matching_parsed_item || new_parsed_item
-            end
-
-            def new_parsed_item
-              Word::Info::Adjective::Parse::AdjectiveParser.call(degree:, number:, gender:, processed_items:)
-              processed_items.last
-            end
-
-            def matching_parsed_item
-              processed_items.find { |item| item.degree.name == degree && item.number.name == number && item.gender.name == gender }
+              ParsedItemManager.call(
+                degree:, 
+                number:, 
+                gender:, 
+                grammatical_case:, 
+                processed_items:
+              ).parsed_item
             end
           end
         end

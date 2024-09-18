@@ -6,7 +6,7 @@ class TelegramWebhooksController < Telegram::Bot::UpdatesController
   end
 
   def message(message)
-    word_info =  Word::Info::Constructor.call(message:)
+    word_info =  Word::Info::Constructor.call(message: message["text"])
     session[:word_info] = word_info
 
     respond_with :message, Presenters::MessagePresenter.call(word_info)

@@ -1,10 +1,11 @@
 module Word
   module Info
-  	module Picker
-  		class InitialWord
-  			include Interactor, WordInfoHelper
+    module Picker
+      class InitialWord
+        include WordInfoHelper
+        include Interactor
 
-  			delegate :message, to: :context
+        delegate :message, to: :context
 
         def call
           context.fail! if initial_item.nil?
@@ -25,7 +26,7 @@ module Word
             expression_attribute_values: { ":message" => message }
           ).items
         end
-  		end
-  	end
+      end
+    end
   end
 end
