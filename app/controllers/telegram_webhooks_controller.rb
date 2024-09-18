@@ -9,7 +9,7 @@ class TelegramWebhooksController < Telegram::Bot::UpdatesController
     word_info =  Word::Info::Constructor.call(message: message["text"])
     session[:word_info] = word_info
 
-    respond_with :message, Presenters::MessagePresenter.call(word_info)
+    respond_with :message, ::MessagePresenter.call(word_info)
     respond_with :document, document: word_info.word_gif if word_info.word_gif
   rescue WordNotFoundError
     respond_with :message, text: ErrorHandlers::WordNotFoundHandler.text
