@@ -7,9 +7,9 @@ module Word
         def call
           adjective_iterator do |degree, number, gender, grammatical_case|
             Parse::GrammaticalCases::CasesParser.call(
-              items:, 
-              degree:, 
-              number:, 
+              items:,
+              degree:,
+              number:,
               gender:,
               grammatical_case:,
               processed_items:

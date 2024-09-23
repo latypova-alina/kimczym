@@ -19,7 +19,7 @@ module Word
             def parse_button(category, button_key)
               {
                 key_name: button_key,
-                translation: Translator.call(category:, key_name:).text
+                translation: Translator.call(category:, key_name: button_key).text
               }
             end
 

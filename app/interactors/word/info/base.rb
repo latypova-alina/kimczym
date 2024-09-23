@@ -7,7 +7,7 @@ module Word
 
       def call
         set_params
-        context.fail! if corresponding_class.nil?
+        raise ::WordNotFoundError if corresponding_class.nil?
       end
 
       private

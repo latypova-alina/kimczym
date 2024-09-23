@@ -28,8 +28,6 @@ module Words
           processed_items.last
         end
 
-        private
-
         def self.item_matches?(item, degree, number, gender)
           item.degree.name == degree && item.number.name == number && item.gender.name == gender
         end

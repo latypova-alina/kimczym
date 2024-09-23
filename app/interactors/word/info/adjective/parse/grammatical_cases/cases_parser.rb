@@ -21,29 +21,29 @@ module Word
 
             def parsed_case
               CaseParser.call(
-                word:, 
-                number:, 
-                gender:, 
+                word:,
+                number:,
+                gender:,
                 grammatical_case:
               ).processed_word
             end
 
             def word
               @word ||= MatchingWord.call(
-                degree:, 
-                number:, 
-                gender:, 
-                grammatical_case:, 
+                degree:,
+                number:,
+                gender:,
+                grammatical_case:,
                 items:
               ).word
             end
 
             def find_or_create_parsed_item
               ParsedItemManager.call(
-                degree:, 
-                number:, 
-                gender:, 
-                grammatical_case:, 
+                degree:,
+                number:,
+                gender:,
+                grammatical_case:,
                 processed_items:
               ).parsed_item
             end

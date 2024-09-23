@@ -3,7 +3,6 @@ module Word
     class Constructor
       include Interactor::Organizer
 
-      # TODO: if fails, raise ::WordNotFoundError
       organize Picker::Pick, Builder, Formatter
     end
   end

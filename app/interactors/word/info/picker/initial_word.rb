@@ -8,9 +8,10 @@ module Word
         delegate :message, to: :context
 
         def call
-          context.fail! if initial_item.nil?
+          raise ::WordNotFoundError if initial_item.nil?
 
           context.initial_word = initial_item["base"]
+          context.initial_item = initial_item
         end
 
         private

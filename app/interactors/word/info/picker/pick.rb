@@ -4,7 +4,7 @@ module Word
       class Pick
         include Interactor::Organizer
 
-        organize InitialWord, Items, BaseItem
+        organize InitialWord, DefaultForm, Items, BaseItem, Gif
       end
     end
   end

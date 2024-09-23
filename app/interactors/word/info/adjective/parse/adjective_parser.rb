@@ -11,7 +11,7 @@ module Word
               number: number_object,
               gender: gender_object,
               key_name:,
-              buttons: 
+              buttons:
             )
           end
 
