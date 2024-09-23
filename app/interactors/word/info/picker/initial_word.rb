@@ -24,7 +24,7 @@ module Word
           dynamodb.query(
             table_name: ENV["TABLE_NAME"],
             key_condition_expression: "word = :message",
-            expression_attribute_values: { ":message" => message }
+            expression_attribute_values: { ":message" => message.downcase }
           ).items
         end
       end
