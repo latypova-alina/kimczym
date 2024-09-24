@@ -23,7 +23,7 @@ class MessagePresenter
 
   def text
     return default_item.formatted_text unless button_key
-    raise ::WordNotFoundError unless item
+    raise ::WordFormNotFoundError unless item
 
     item.formatted_text
   end
@@ -42,7 +42,7 @@ class MessagePresenter
 
   def buttons
     return default_item.buttons unless button_key
-    raise ::WordNotFoundError unless item
+    raise ::WordFormNotFoundError unless item
 
     item.buttons
   end

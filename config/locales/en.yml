@@ -5,6 +5,7 @@ en:
   errors:
     word_not_found: The word was not found :(
     forgotten_word: Please provide the word first
+    word_form_not_found: 🤷‍♀️
   shared:
     pl: "Liczba mnoga"
     sg: "Liczba pojedyncza"

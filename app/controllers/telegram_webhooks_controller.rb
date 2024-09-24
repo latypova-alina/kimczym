@@ -25,5 +25,7 @@ class TelegramWebhooksController < Telegram::Bot::UpdatesController
     respond_with :document, document: ErrorHandlers::WordNotFoundHandler.image
   rescue WordForgottenError
     respond_with :message, text: ErrorHandlers::ForgottenWordHandler.text
+  rescue WordFormNotFoundError
+    respond_with :message, text: ErrorHandlers::WordFormNotFoundHandler.text
   end
 end
