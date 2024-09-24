@@ -1,7 +1,10 @@
 module Word
   module Info
     class Formatter < Base
-      FORMATTER_CLASSES = { "adj" => Adjective::Formatter }.freeze
+      FORMATTER_CLASSES = {
+        "adj" => Adjective::Formatter,
+        "subst" => Noun::Formatter
+      }.freeze
 
       def call
         super()

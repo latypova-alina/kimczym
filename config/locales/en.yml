@@ -22,6 +22,10 @@ en:
     inst: "Narzędnik (z kim? z czym?)"
     loc: "Miejscownik (o kim? o czym?)"
     voc: "Wołacz (o! hej!)"
+    buttons:
+      number:
+        pl: "Liczba mnoga"
+        sg: "Liczba pojedyncza"
   adj:
     pos: "Stopień równy"
     com: "Stopień wyższy"

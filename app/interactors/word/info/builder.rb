@@ -1,7 +1,10 @@
 module Word
   module Info
     class Builder < Base
-      BUILDER_CLASSES = { "adj" => Adjective::Builder }.freeze
+      BUILDER_CLASSES = {
+        "adj" => Adjective::Builder,
+        "subst" => Noun::Builder
+      }.freeze
 
       def call
         super()
