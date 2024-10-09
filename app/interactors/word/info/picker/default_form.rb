@@ -14,24 +14,14 @@ module Word
         delegate :base_item, :initial_item, :items, to: :context
 
         def call
-          context.default_item = default_item
+          context.default_item = picker.default_item
           context.default_form = picker.default_form
         end
 
         private
 
         def picker
-          PICKER_CLASSES[splitted_base_form[0]].call(splitted_form: splitted_default_form)
-        end
-
-        def splitted_default_form
-          default_item["form"].split(":")
-        end
-
-        def default_item
-          items.select do |item|
-            item["word"] == initial_item["word"] && item["form"].split(":")[0] == splitted_base_form[0]
-          end.first
+          PICKER_CLASSES[splitted_base_form[0]].call(items:, initial_item:, splitted_base_form:)
         end
 
         def splitted_base_form
