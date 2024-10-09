@@ -3,7 +3,8 @@ module Word
     class Formatter < Base
       FORMATTER_CLASSES = {
         "adj" => Adjective::Formatter,
-        "subst" => Noun::Formatter
+        "subst" => Noun::Formatter,
+        "inf" => Verb::Formatter
       }.freeze
 
       def call

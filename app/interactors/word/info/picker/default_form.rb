@@ -4,24 +4,38 @@ module Word
       class DefaultForm
         include Interactor
 
-        delegate :initial_item, to: :context
+        PICKER_CLASSES = {
+          "adj" => Adjective::DefaultForm,
+          "subst" => Noun::DefaultForm,
+          "inf" => Verb::DefaultForm,
+          "fin" => Verb::DefaultForm
+        }.freeze
+
+        delegate :base_item, :initial_item, :items, to: :context
 
         def call
-          context.default_form = key_name
+          context.default_item = default_item
+          context.default_form = picker.default_form
         end
 
         private
 
-        def key_name
-          number = splitted_form[1]
-          gender = splitted_form[3]
-          degree = splitted_form[4]
-
-          [number, gender, degree].join(".")
+        def picker
+          PICKER_CLASSES[splitted_base_form[0]].call(splitted_form: splitted_default_form)
         end
 
-        def splitted_form
-          @splitted_form ||= initial_item["form"].split(":")
+        def splitted_default_form
+          default_item["form"].split(":")
+        end
+
+        def default_item
+          items.select do |item|
+            item["word"] == initial_item["word"] && item["form"].split(":")[0] == splitted_base_form[0]
+          end.first
+        end
+
+        def splitted_base_form
+          @splitted_base_form ||= base_item["form"].split(":")
         end
       end
     end

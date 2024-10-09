@@ -14,6 +14,22 @@ en:
     m3: "Rodzaj męski nieżywotny"
     f: "Rodzaj żeński"
     n: "Rodzaj nijaki"
+  verb:
+    fin: 
+      name: Czasownik osobowy
+      sg:
+        pri: Ja
+        sec: Ty
+        ter: On/Ona/Ono
+      pl:
+        pri: My
+        sec: Wy
+        ter: Oni/One
+    verb_form:
+      praet: "Czas przeszły"
+      fin: "Czasownik osobowy"
+      cond: "Tryb przypuszczający"
+      impt: "Tryb rozkazujący"
   subst:
     nom: "Mianownik (kto? co?)"
     acc: "Biernik (kogo? co?)"

@@ -17,7 +17,6 @@ module Word
       end
 
       def set_params
-        context.form_name ||= base_item["form"].split(":")[0]
         context.processed_items ||= []
       end
     end

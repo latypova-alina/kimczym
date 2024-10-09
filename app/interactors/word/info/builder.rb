@@ -3,12 +3,12 @@ module Word
     class Builder < Base
       BUILDER_CLASSES = {
         "adj" => Adjective::Builder,
-        "subst" => Noun::Builder
+        "subst" => Noun::Builder,
+        "inf" => Verb::Builder
       }.freeze
 
       def call
         super()
-        filter_items
         corresponding_class.call(items:, processed_items:)
       end
 
@@ -16,10 +16,6 @@ module Word
 
       def corresponding_class
         BUILDER_CLASSES[form_name]
-      end
-
-      def filter_items
-        context.items.select! { |item| item["form"].split(":")[0] == form_name }
       end
     end
   end

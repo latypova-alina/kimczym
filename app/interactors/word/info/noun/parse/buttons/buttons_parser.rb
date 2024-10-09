@@ -9,19 +9,15 @@ module Word
             def call
               context.buttons = OpenStruct.new(
                 number: parsed_buttons("number"),
-                key_name:,
+                key_name: number,
                 categories: BUTTONS_CATEGORIES
               )
             end
 
             private
 
-            def key_name
-              number
-            end
-
             def parsed_buttons(category)
-              CategoryButtonsParser.call(key_name:, category:).parsed_buttons
+              CategoryButtonsParser.call(key_name: number, category:).parsed_buttons
             end
           end
         end
