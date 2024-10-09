@@ -10,8 +10,16 @@ module Word
 
         def call
           processed_items.each do |verb_form_item|
-            FORMATTER_CLASSES[verb_form_item.name].call(processed_items: verb_form_item.processed_items)
+            verb_form_item.formatted_text = processed_subitems(verb_form_item).map do |sub_item|
+              sub_item.formatted_text
+            end.join("\n\n")
           end
+        end
+
+        private
+
+        def processed_subitems(verb_form_item)
+          FORMATTER_CLASSES[verb_form_item.name].call(processed_items: verb_form_item.processed_items).processed_items
         end
       end
     end
