@@ -1,0 +1,2 @@
+class WordFormNotFoundError < StandardError
+end

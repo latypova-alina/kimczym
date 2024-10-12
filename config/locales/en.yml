@@ -4,9 +4,33 @@ en:
       content: Hi there! Please give a word
   errors:
     word_not_found: The word was not found :(
-  subst:
+    forgotten_word: Please provide the word first
+    word_form_not_found: 🤷‍♀️
+  shared:
     pl: "Liczba mnoga"
     sg: "Liczba pojedyncza"
+    m1: "Rodzaj męski osobowy"
+    m2: "Rodzaj męski nieosobowy"
+    m3: "Rodzaj męski nieżywotny"
+    f: "Rodzaj żeński"
+    n: "Rodzaj nijaki"
+  verb:
+    fin: 
+      name: Czasownik osobowy
+      sg:
+        pri: Ja
+        sec: Ty
+        ter: On/Ona/Ono
+      pl:
+        pri: My
+        sec: Wy
+        ter: Oni/One
+    verb_form:
+      praet: "Czas przeszły"
+      fin: "Czasownik osobowy"
+      cond: "Tryb przypuszczający"
+      impt: "Tryb rozkazujący"
+  subst:
     nom: "Mianownik (kto? co?)"
     acc: "Biernik (kogo? co?)"
     gen: "Dopełniacz (kogo? czego?)"
@@ -14,3 +38,67 @@ en:
     inst: "Narzędnik (z kim? z czym?)"
     loc: "Miejscownik (o kim? o czym?)"
     voc: "Wołacz (o! hej!)"
+    buttons:
+      number:
+        pl: "Liczba mnoga"
+        sg: "Liczba pojedyncza"
+  adj:
+    pos: "Stopień równy"
+    com: "Stopień wyższy"
+    sup: "Stopień najwyższy"
+    buttons:
+      number:
+        pl: "Liczba mnoga"
+        sg: "Liczba pojedyncza"
+      gender:
+        m1: "Rodzaj męski"
+        m2: "Rodzaj męski"
+        m3: "Rodzaj męski"
+        f: "Rodzaj żeński"
+        n: "Rodzaj nijaki"
+      degree: 
+        pos: "Stopień równy"
+        com: "Stopień wyższy"
+        sup: "Stopień najwyższy"
+    sg:
+      m1_m2_m3:
+        nom: "Mianownik (jaki?)"
+        acc: "Biernik (jaki?)"
+        gen: "Dopełniacz (jakiego?)"
+        dat: "Celownik (jakiemu?)"
+        inst: "Narzędnik (z jakim?)"
+        loc: "Miejscownik (o jakim?)"
+        voc: "Wołacz (jaki?)"
+      f:
+        nom: "Mianownik (jaka?)"
+        acc: "Biernik (jaką?)"
+        gen: "Dopełniacz (jakiej?)"
+        dat: "Celownik (jakiej?)"
+        inst: "Narzędnik (z jaką?)"
+        loc: "Miejscownik (o jakiej?)"
+        voc: "Wołacz (jaka?)"
+      n:
+        nom: "Mianownik (jakie?)"
+        acc: "Biernik (jakie?)"
+        gen: "Dopełniacz (jakiego?)"
+        dat: "Celownik (jakiemu?)"
+        inst: "Narzędnik (z jakim?)"
+        loc: "Miejscownik (o jakim?)"
+        voc: "Wołacz (jakie?)"
+    pl:
+      m1:
+        nom: "Mianownik (jacy?)"
+        acc: "Biernik (jakich?)"
+        gen: "Dopełniacz (jakich?)"
+        dat: "Celownik (jakim?)"
+        inst: "Narzędnik (z jakimi?)"
+        loc: "Miejscownik (o jakich?)"
+        voc: "Wołacz (jacy?)"
+      m2_m3_f_n:
+        nom: "Mianownik (jakie?)"
+        acc: "Biernik (jakie?)"
+        gen: "Dopełniacz (jakich?)"
+        dat: "Celownik (jakim?)"
+        inst: "Narzędnik (z jakimi?)"
+        loc: "Miejscownik (o jakich?)"
+        voc: "Wołacz (jakie?)"

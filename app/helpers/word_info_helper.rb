@@ -1,4 +1,4 @@
-module ApplicationHelper
+module WordInfoHelper
   def dynamodb
     @dynamodb ||= DynamoDb.client
   end
