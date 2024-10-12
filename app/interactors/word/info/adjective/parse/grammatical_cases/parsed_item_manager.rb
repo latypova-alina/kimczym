@@ -22,7 +22,7 @@ module Word
             end
 
             def item_matches?(item)
-              item.degree.name == degree && item.number.name == number && item.gender.name == gender
+              item.degree == degree && item.number == number && item.gender == gender
             end
           end
         end

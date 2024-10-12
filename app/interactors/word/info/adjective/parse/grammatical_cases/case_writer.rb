@@ -7,8 +7,7 @@ module Word
             delegate :parsed_case, :item, to: :context
 
             def call
-              item.cases ||= []
-              item.cases << parsed_case
+              item.send("#{parsed_case.name}=", parsed_case.value)
             end
           end
         end

@@ -13,7 +13,7 @@ module Word
             private
 
             def formatted_text
-              Text.call(item: item).text
+              Text.call(item:).text
             end
           end
         end
