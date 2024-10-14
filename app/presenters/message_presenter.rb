@@ -1,14 +1,10 @@
-class MessagePresenter
-  include ApplicationHelper
+class MessagePresenter < Base
+  PRESENTER_CLASSES = {
+    "adj" => ::AdjectivePresenter
+  }.freeze
 
   def self.call(*args)
     new(*args).call
-  end
-
-  def initialize(word_info, button_key = nil)
-    @default_form = word_info.default_form
-    @items = word_info.processed_items
-    @button_key = button_key
   end
 
   def call
@@ -21,11 +17,10 @@ class MessagePresenter
 
   private
 
-  def text
-    return default_item.formatted_text unless button_key
-    raise ::WordFormNotFoundError unless item
+  delegate :form_name, to: :picked_items
 
-    item.formatted_text
+  def text
+    formatted_text
   end
 
   def reply_markup
@@ -40,20 +35,15 @@ class MessagePresenter
     end
   end
 
+  def formatted_text
+    corresponding_class.formatted_text
+  end
+
   def buttons
-    return default_item.buttons unless button_key
-    raise ::WordFormNotFoundError unless item
-
-    item.buttons
+    corresponding_class.buttons
   end
 
-  def default_item
-    @default_item ||= find_item(items, default_form) || items[0]
+  def corresponding_class
+    @corresponding_class ||= PRESENTER_CLASSES[form_name].new(picked_items, requested_word_form)
   end
-
-  def item
-    @item ||= find_item(items, button_key)
-  end
-
-  attr_reader :items, :default_form, :button_key
 end

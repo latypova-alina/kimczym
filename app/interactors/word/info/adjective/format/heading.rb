@@ -12,7 +12,19 @@ module Word
           private
 
           def heading
-            "<strong>#{item.degree.translation} / #{item.number.translation} / #{item.gender.translation}</strong>\n\n"
+            "<strong>#{degree_translation} / #{number_translation} / #{gender_translation}</strong>\n\n"
+          end
+
+          def degree_translation
+            I18n.t("#{NAME}.#{item.degree}")
+          end
+
+          def number_translation
+            I18n.t("shared.#{item.number}")
+          end
+
+          def gender_translation
+            I18n.t("shared.#{item.gender}")
           end
         end
       end

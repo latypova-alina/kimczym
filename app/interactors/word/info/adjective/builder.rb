@@ -2,19 +2,32 @@ module Word
   module Info
     module Adjective
       class Builder < Base
-        delegate :items, :processed_items, to: :context
+        delegate :picked_items, :requested_word_forms, :processed_items, to: :context
+        delegate :items, to: :picked_items
+
+        CLASSIC_CASES_ORDER = %w[nom gen dat acc inst loc voc].freeze
 
         def call
-          adjective_iterator do |degree, number, gender, grammatical_case|
-            Parse::GrammaticalCases::CasesParser.call(
-              items:,
-              degree:,
-              number:,
-              gender:,
-              grammatical_case:,
-              processed_items:
-            )
+          requested_word_forms.each do |word_form|
+            splitted_form = splitted_form(word_form)
+
+            CLASSIC_CASES_ORDER.each do |grammatical_case|
+              Parse::GrammaticalCases::CasesParser.call(
+                items:,
+                degree: splitted_form[2],
+                number: splitted_form[0],
+                gender: splitted_form[1],
+                grammatical_case:,
+                processed_items:
+              )
+            end
           end
+        end
+
+        private
+
+        def splitted_form(word_form)
+          word_form.split(".")
         end
       end
     end

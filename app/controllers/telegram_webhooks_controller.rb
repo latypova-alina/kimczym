@@ -6,20 +6,20 @@ class TelegramWebhooksController < Telegram::Bot::UpdatesController
   end
 
   def message(message)
-    word_info =  Word::Info::Constructor.call(message: message["text"])
-    session[:word_info] = word_info
+    picked_items = Word::Info::Picker::Pick.call(message: message["text"])
+    session[:picked_items] = picked_items
 
-    respond_with :message, ::MessagePresenter.call(word_info)
-    respond_with :document, document: word_info.gif if word_info.gif
+    respond_with :message, MessagePresenter.call(picked_items)
+    respond_with :document, document: picked_items.gif if picked_items.gif
   rescue WordNotFoundError
     respond_with :message, text: ErrorHandlers::WordNotFoundHandler.text
     respond_with :document, document: ErrorHandlers::WordNotFoundHandler.image
   end
 
   def callback_query(data)
-    word_info = session[:word_info] || raise(::WordForgottenError)
+    picked_items = session[:picked_items] || raise(::WordForgottenError)
 
-    respond_with :message, ::MessagePresenter.call(word_info, data)
+    respond_with :message, MessagePresenter.call(picked_items, data)
   rescue WordNotFoundError
     respond_with :message, text: ErrorHandlers::WordNotFoundHandler.text
     respond_with :document, document: ErrorHandlers::WordNotFoundHandler.image

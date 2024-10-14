@@ -4,7 +4,8 @@ module Word
       module Parse
         module Buttons
           class ButtonsParser < Word::Info::Adjective::Base
-            delegate :number, :gender, :degree, to: :context
+            delegate :item, to: :context
+            delegate :key_name, to: :item
 
             def call
               context.buttons = OpenStruct.new(
@@ -20,10 +21,6 @@ module Word
 
             def parsed_buttons(category)
               CategoryButtonsParser.call(key_name:, category:).parsed_buttons
-            end
-
-            def key_name
-              @key_name ||= [number, BUTTON_GENDER[gender], degree].join(".")
             end
           end
         end

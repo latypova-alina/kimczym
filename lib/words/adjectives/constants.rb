@@ -39,7 +39,19 @@ module Words
         "sg.m1.sup" => ["sg.m1.sup", "sg.m2.sup", "sg.m3.sup"],
         "pl.m1.pos" => ["pl.m1.pos", "pl.m2.pos", "pl.m3.pos"],
         "pl.m1.com" => ["pl.m1.com", "pl.m2.com", "pl.m3.com"],
-        "pl.m1.sup" => ["pl.m1.sup", "pl.m2.sup", "pl.m3.sup"]
+        "pl.m1.sup" => ["pl.m1.sup", "pl.m2.sup", "pl.m3.sup"],
+        "sg.m2.pos" => ["sg.m1.pos", "sg.m2.pos", "sg.m3.pos"],
+        "sg.m2.com" => ["sg.m1.com", "sg.m2.com", "sg.m3.com"],
+        "sg.m2.sup" => ["sg.m1.sup", "sg.m2.sup", "sg.m3.sup"],
+        "pl.m2.pos" => ["pl.m1.pos", "pl.m2.pos", "pl.m3.pos"],
+        "pl.m2.com" => ["pl.m1.com", "pl.m2.com", "pl.m3.com"],
+        "pl.m2.sup" => ["pl.m1.sup", "pl.m2.sup", "pl.m3.sup"],
+        "sg.m3.pos" => ["sg.m1.pos", "sg.m2.pos", "sg.m3.pos"],
+        "sg.m3.com" => ["sg.m1.com", "sg.m2.com", "sg.m3.com"],
+        "sg.m3.sup" => ["sg.m1.sup", "sg.m2.sup", "sg.m3.sup"],
+        "pl.m3.pos" => ["pl.m1.pos", "pl.m2.pos", "pl.m3.pos"],
+        "pl.m3.com" => ["pl.m1.com", "pl.m2.com", "pl.m3.com"],
+        "pl.m3.sup" => ["pl.m1.sup", "pl.m2.sup", "pl.m3.sup"]
       }.freeze
 
       BUTTON_KEYS_MATCHERS = {

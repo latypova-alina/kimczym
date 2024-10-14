@@ -10,9 +10,7 @@ module Word
 
         def call
           processed_items.each do |verb_form_item|
-            verb_form_item.formatted_text = processed_subitems(verb_form_item).map do |sub_item|
-              sub_item.formatted_text
-            end.join("\n\n")
+            verb_form_item.formatted_text = processed_subitems(verb_form_item).map(&:formatted_text).join("\n\n")
           end
         end
 
