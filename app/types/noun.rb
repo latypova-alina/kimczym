@@ -1,6 +1,7 @@
 require "active_model"
 
 class Noun
+  include ActiveModel::Validations
   include ::Caseable
 
   VALID_NUMBERS = %w[sg pl].freeze

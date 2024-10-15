@@ -9,15 +9,8 @@ module Word
             def call
               context.processed_word = OpenStruct.new(
                 name: grammatical_case,
-                value: word,
-                translation:
+                value: word
               )
-            end
-
-            private
-
-            def translation
-              I18n.t("#{NAME}.#{grammatical_case}")
             end
           end
         end

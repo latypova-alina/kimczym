@@ -1,6 +1,7 @@
 class MessagePresenter < Base
   PRESENTER_CLASSES = {
-    "adj" => ::AdjectivePresenter
+    "adj" => ::AdjectivePresenter,
+    "subst" => ::NounPresenter
   }.freeze
 
   def self.call(*args)

@@ -14,11 +14,6 @@ module Word
 
             private
 
-            def add_case_to_item(item)
-              item.cases ||= []
-              item.cases << parsed_case
-            end
-
             def parsed_case
               CaseParser.call(
                 word:,

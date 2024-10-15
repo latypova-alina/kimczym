@@ -12,7 +12,7 @@ module Word
           private
 
           def heading
-            "<strong>#{item.number.translation}</strong>\n\n"
+            "<strong>#{I18n.t("shared.#{item.number}")}</strong>\n\n"
           end
         end
       end

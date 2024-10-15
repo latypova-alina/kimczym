@@ -22,7 +22,7 @@ module Word
             end
 
             def item_matches?(item)
-              item.number.name == number
+              item.number == number
             end
           end
         end

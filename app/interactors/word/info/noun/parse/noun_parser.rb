@@ -6,21 +6,7 @@ module Word
           delegate :number, :processed_items, to: :context
 
           def call
-            processed_items << OpenStruct.new(
-              number: number_object,
-              key_name: number,
-              buttons:
-            )
-          end
-
-          private
-
-          def number_object
-            OpenStruct.new(name: number, translation: I18n.t("shared.#{number}"))
-          end
-
-          def buttons
-            Buttons::ButtonsParser.call(number:).buttons
+            processed_items << ::Noun.new(number:, key_name: number)
           end
         end
       end

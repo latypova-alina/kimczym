@@ -4,7 +4,8 @@ module Word
       module Parse
         module Buttons
           class ButtonsParser < Word::Info::Noun::Base
-            delegate :number, :gender, :degree, to: :context
+            delegate :item, to: :context
+            delegate :key_name, :number, to: :item
 
             def call
               context.buttons = OpenStruct.new(

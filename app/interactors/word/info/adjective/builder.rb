@@ -5,8 +5,6 @@ module Word
         delegate :picked_items, :requested_word_forms, :processed_items, to: :context
         delegate :items, to: :picked_items
 
-        CLASSIC_CASES_ORDER = %w[nom gen dat acc inst loc voc].freeze
-
         def call
           requested_word_forms.each do |word_form|
             splitted_form = splitted_form(word_form)
