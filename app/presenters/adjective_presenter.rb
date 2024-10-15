@@ -24,6 +24,11 @@ class AdjectivePresenter < Base
   end
 
   def requested_word_forms
-    JOIN_CONTENTS[requested_word_form] || [requested_word_form]
+    JOIN_CONTENTS[single_gender_word_form] || [single_gender_word_form]
+  end
+
+  def single_gender_word_form
+    splitted_form = requested_word_form.split(".")
+    [splitted_form[0], splitted_form[1], splitted_form[-1]].join(".")
   end
 end

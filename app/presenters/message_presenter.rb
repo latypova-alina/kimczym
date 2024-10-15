@@ -10,7 +10,7 @@ class MessagePresenter < Base
   def call
     {
       parse_mode: "HTML",
-      text:,
+      text: formatted_text,
       reply_markup:
     }
   end
@@ -18,10 +18,7 @@ class MessagePresenter < Base
   private
 
   delegate :form_name, to: :picked_items
-
-  def text
-    formatted_text
-  end
+  delegate :formatted_text, :buttons, to: :corresponding_class
 
   def reply_markup
     { inline_keyboard: }
@@ -33,14 +30,6 @@ class MessagePresenter < Base
         { text: button.translation, callback_data: button.key_name }
       end
     end
-  end
-
-  def formatted_text
-    corresponding_class.formatted_text
-  end
-
-  def buttons
-    corresponding_class.buttons
   end
 
   def corresponding_class
