@@ -4,16 +4,10 @@ module Word
       module Finite
         module Format
           class JoinedContent < Word::Info::Verb::Base
-            delegate :item, to: :context
+            delegate :processed_items, to: :context
 
             def call
-              context.formatted_text = formatted_text
-            end
-
-            private
-
-            def formatted_text
-              Text.call(item:).text
+              context.formatted_text = processed_items.map { |sub_item| Text.call(item: sub_item).text }.join("\n\n")
             end
           end
         end

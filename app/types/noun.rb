@@ -3,12 +3,9 @@ require "active_model"
 class Noun
   include ActiveModel::Validations
   include ::Caseable
+  include ::Numberable
 
-  VALID_NUMBERS = %w[sg pl].freeze
-
-  attr_accessor :number, :key_name
-
-  validates :number, inclusion: { in: VALID_NUMBERS, message: "%<value>s is not a valid number" }
+  attr_accessor :key_name
 
   def initialize(number:, key_name: nil)
     @number = number

@@ -4,19 +4,10 @@ module Word
       module Finite
         module Parse
           class FiniteParser < Word::Info::Verb::Base
-            delegate :number, :processed_subitems, to: :context
+            delegate :number, :processed_items, :key_name, to: :context
 
             def call
-              processed_subitems << OpenStruct.new(
-                number: number_object,
-                key_name: number
-              )
-            end
-
-            private
-
-            def number_object
-              OpenStruct.new(name: number, translation: I18n.t("shared.#{number}"))
+              processed_items << ::Verbs::Finite.new(number:, key_name:)
             end
           end
         end

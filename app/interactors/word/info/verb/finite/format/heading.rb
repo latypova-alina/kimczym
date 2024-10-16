@@ -13,7 +13,15 @@ module Word
             private
 
             def heading
-              "<strong>#{FINITE_NAME} / #{item.number.translation}</strong>\n\n"
+              "<strong>#{verb_form_translation} / #{number_translation}</strong>\n\n"
+            end
+
+            def number_translation
+              I18n.t("shared.#{item.number}")
+            end
+
+            def verb_form_translation
+              I18n.t("#{NAME}.#{FINITE_NAME}.name")
             end
           end
         end

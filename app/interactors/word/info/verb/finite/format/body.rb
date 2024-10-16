@@ -13,9 +13,15 @@ module Word
             private
 
             def body
-              item.persons.map do |person|
-                "<strong>#{person.translation}</strong> #{person.value}"
+              CLASSIC_PERSON_ORDER.map do |person|
+                person_value = item.send(person)
+
+                "<strong>#{I18n.t(person_translation_key(person))}</strong> #{person_value}"
               end.join("\n")
+            end
+
+            def person_translation_key(person)
+              "#{NAME}.#{FINITE_NAME}.#{item.number}.#{person}"
             end
           end
         end

@@ -5,8 +5,10 @@ module Word
         class DefaultForm
           include Interactor
 
+          DEFAULT_FORM = "fin.sg".freeze
+
           def call
-            context.default_form = nil
+            context.default_form = DEFAULT_FORM
           end
         end
       end

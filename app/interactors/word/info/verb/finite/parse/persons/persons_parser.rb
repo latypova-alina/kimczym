@@ -5,7 +5,7 @@ module Word
         module Parse
           module Persons
             class PersonsParser < Word::Info::Verb::Base
-              delegate :items, :number, :processed_subitems, :person, to: :context
+              delegate :items, :number, :processed_items, :person, :key_name, to: :context
 
               def call
                 return unless word
@@ -35,7 +35,8 @@ module Word
                 ParsedItemManager.call(
                   number:,
                   person:,
-                  processed_subitems:
+                  processed_items:,
+                  key_name:
                 ).parsed_item
               end
             end

@@ -8,8 +8,7 @@ module Word
               delegate :parsed_person, :item, to: :context
 
               def call
-                item.persons ||= []
-                item.persons << parsed_person
+                item.send("#{parsed_person.name}=", parsed_person.value)
               end
             end
           end

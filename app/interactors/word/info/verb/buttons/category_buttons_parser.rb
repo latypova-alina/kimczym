@@ -23,7 +23,7 @@ module Word
           end
 
           def button
-            @button ||= BUTTONS[key_name]
+            BUTTONS[key_name]
           end
         end
       end

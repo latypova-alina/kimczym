@@ -1,7 +1,8 @@
 class MessagePresenter < Base
   PRESENTER_CLASSES = {
     "adj" => ::AdjectivePresenter,
-    "subst" => ::NounPresenter
+    "subst" => ::NounPresenter,
+    "inf" => ::VerbPresenter
   }.freeze
 
   def self.call(*args)
@@ -18,9 +19,6 @@ class MessagePresenter < Base
 
   private
 
-  delegate :form_name, to: :picked_items
-  delegate :formatted_text, :buttons, to: :corresponding_class
-
   def reply_markup
     { inline_keyboard: }
   end
@@ -32,6 +30,9 @@ class MessagePresenter < Base
       end
     end
   end
+
+  delegate :form_name, to: :picked_items
+  delegate :formatted_text, :buttons, to: :corresponding_class
 
   def corresponding_class
     @corresponding_class ||= PRESENTER_CLASSES[form_name].new(picked_items, requested_word_form)
