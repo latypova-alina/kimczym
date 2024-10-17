@@ -8,11 +8,19 @@ class Base
     raise NotImplementedError
   end
 
-  def buttons
-    raise NotImplementedError
+  def inline_keyboard
+    buttons.categories.map do |category|
+      buttons.send(category).map do |button|
+        { text: button.translation, callback_data: button.key_name }
+      end
+    end
   end
 
   private
+
+  def buttons
+    raise NotImplementedError
+  end
 
   attr_reader :picked_items, :requested_word_form
 

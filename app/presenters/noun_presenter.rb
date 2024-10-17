@@ -7,13 +7,13 @@ class NounPresenter < Base
     Word::Info::Noun::Formatter.call(processed_items: noun_objects).formatted_text
   end
 
+  private
+
   def buttons
     Word::Info::Noun::Parse::Buttons::ButtonsParser.call(
       item: noun_objects.first
     ).buttons
   end
-
-  private
 
   def noun_objects
     Word::Info::Noun::Builder.call(

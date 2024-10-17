@@ -8,11 +8,17 @@ module Verbs
       Word::Info::Verb::Finite::Formatter.call(processed_items: finite_objects).formatted_text
     end
 
-    def buttons
-      Word::Info::Verb::Buttons::Builder.call(verb_form: FINITE_NAME).buttons
+    def inline_keyboard
+      buttons.verb_form.map do |button|
+        [{ text: button.translation, callback_data: button.key_name }]
+      end
     end
 
     private
+
+    def buttons
+      Word::Info::Verb::Buttons::Builder.call(verb_form: FINITE_NAME).buttons
+    end
 
     def finite_objects
       Word::Info::Verb::Finite::Builder.call(
