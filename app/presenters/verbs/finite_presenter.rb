@@ -9,7 +9,7 @@ module Verbs
     end
 
     def inline_keyboard
-      buttons.verb_form.map do |button|
+      buttons.map do |button|
         [{ text: button.translation, callback_data: button.key_name }]
       end
     end
@@ -17,7 +17,7 @@ module Verbs
     private
 
     def buttons
-      Word::Info::Verb::Buttons::Builder.call(verb_form: FINITE_NAME).buttons
+      Word::Info::Verb::Buttons::Builder.call(key_name: FINITE_NAME).buttons
     end
 
     def finite_objects
