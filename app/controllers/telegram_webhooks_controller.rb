@@ -6,7 +6,7 @@ class TelegramWebhooksController < Telegram::Bot::UpdatesController
   end
 
   def message(message)
-    picked_items = Word::Info::Picker::Pick.call(message: message["text"])
+    picked_items = WordInfo::Picker::Pick.call(message: message["text"])
     session[:picked_items] = picked_items
 
     respond_with :message, MessagePresenter.call(picked_items)

@@ -4,7 +4,7 @@ class AdjectivePresenter < Base
   def formatted_text
     raise ::WordFormNotFoundError if adjective_objects.blank?
 
-    Word::Info::Adjective::Formatter.call(processed_items: adjective_objects).formatted_text
+    WordInfo::Adjective::Formatter.call(processed_items: adjective_objects).formatted_text
   end
 
   def inline_keyboard
@@ -18,7 +18,7 @@ class AdjectivePresenter < Base
   private
 
   def adjective_objects
-    Word::Info::Adjective::Builder.call(
+    WordInfo::Adjective::Builder.call(
       picked_items:,
       requested_word_forms:,
       processed_items: []
@@ -26,7 +26,7 @@ class AdjectivePresenter < Base
   end
 
   def buttons
-    Word::Info::Adjective::Parse::Buttons::ButtonsParser.call(
+    WordInfo::Adjective::Parse::Buttons::ButtonsParser.call(
       item: adjective_objects.first
     ).buttons
   end

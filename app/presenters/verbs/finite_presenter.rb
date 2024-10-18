@@ -5,7 +5,7 @@ module Verbs
     def formatted_text
       raise ::WordFormNotFoundError if finite_objects.blank?
 
-      Word::Info::Verb::Finite::Formatter.call(processed_items: finite_objects).formatted_text
+      WordInfo::Verb::Finite::Formatter.call(processed_items: finite_objects).formatted_text
     end
 
     def inline_keyboard
@@ -17,11 +17,11 @@ module Verbs
     private
 
     def buttons
-      Word::Info::Verb::Buttons::Builder.call(key_name: FINITE_NAME).buttons
+      WordInfo::Verb::Buttons::Builder.call(key_name: FINITE_NAME).buttons
     end
 
     def finite_objects
-      Word::Info::Verb::Finite::Builder.call(
+      WordInfo::Verb::Finite::Builder.call(
         picked_items:,
         requested_word_forms:,
         processed_items: []

@@ -1,0 +1,31 @@
+module WordInfo
+  module Adjective
+    class Builder < Base
+      delegate :picked_items, :requested_word_forms, :processed_items, to: :context
+      delegate :items, to: :picked_items
+
+      def call
+        requested_word_forms.each do |word_form|
+          splitted_form = splitted_form(word_form)
+
+          CLASSIC_CASES_ORDER.each do |grammatical_case|
+            Parse::GrammaticalCases::CasesParser.call(
+              items:,
+              degree: splitted_form[2],
+              number: splitted_form[0],
+              gender: splitted_form[1],
+              grammatical_case:,
+              processed_items:
+            )
+          end
+        end
+      end
+
+      private
+
+      def splitted_form(word_form)
+        word_form.split(".")
+      end
+    end
+  end
+end

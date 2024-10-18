@@ -4,19 +4,19 @@ class NounPresenter < Base
   def formatted_text
     raise ::WordFormNotFoundError if noun_objects.blank?
 
-    Word::Info::Noun::Formatter.call(processed_items: noun_objects).formatted_text
+    WordInfo::Noun::Formatter.call(processed_items: noun_objects).formatted_text
   end
 
   private
 
   def buttons
-    Word::Info::Noun::Parse::Buttons::ButtonsParser.call(
+    WordInfo::Noun::Parse::Buttons::ButtonsParser.call(
       item: noun_objects.first
     ).buttons
   end
 
   def noun_objects
-    Word::Info::Noun::Builder.call(
+    WordInfo::Noun::Builder.call(
       picked_items:,
       requested_word_forms:,
       processed_items: []
