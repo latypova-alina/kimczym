@@ -16,7 +16,7 @@ module WordInfo
               person_value = item.send(person)
 
               "<strong>#{I18n.t(person_translation_key(person))}</strong> #{person_value}"
-            end.join("\n")
+            end
           end
 
           def person_translation_key(person)

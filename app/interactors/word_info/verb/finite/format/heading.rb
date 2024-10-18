@@ -3,8 +3,6 @@ module WordInfo
     module Finite
       module Format
         class Heading < WordInfo::Verb::Base
-          delegate :item, to: :context
-
           def call
             context.heading = heading
           end
@@ -12,11 +10,7 @@ module WordInfo
           private
 
           def heading
-            "<strong>#{verb_form_translation} / #{number_translation}</strong>\n\n"
-          end
-
-          def number_translation
-            I18n.t("shared.#{item.number}")
+            "<strong>#{verb_form_translation}</strong>\n\n"
           end
 
           def verb_form_translation
