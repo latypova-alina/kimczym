@@ -3,7 +3,7 @@ module WordInfo
     module Parse
       module GrammaticalCases
         class CaseParser < WordInfo::Adjective::Base
-          delegate :word, :grammatical_case, :processed_word, to: :context
+          delegate :word, :grammatical_case, to: :context
 
           def call
             context.processed_word = OpenStruct.new(

@@ -20,12 +20,6 @@ module WordInfo
           end
         end
       end
-
-      private
-
-      def splitted_form(word_form)
-        word_form.split(".")
-      end
     end
   end
 end
