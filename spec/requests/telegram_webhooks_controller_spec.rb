@@ -9,16 +9,34 @@ describe TelegramWebhooksController, telegram_bot: :rails do
 
   describe "#message" do
     let(:text) { "word" }
-    let(:word_info) { double("Words::WordInfo", word_forms: "Word forms", word_gif: "Word gif") }
-
-    before { allow(Words::WordInfo).to receive(:new).with("word").and_return(word_info) }
 
     subject { -> { dispatch_message(text) } }
 
-    it { should respond_with_message "Word forms" }
+    let(:picked_items) { OpenStruct.new(gif: "gif") }
+    let(:message_presenter) do
+      {
+        parse_mode: "HTML",
+        text: "Word Forms"
+      }
+    end
+
+    let(:expected_message) do
+      { parse_mode: "HTML", text: "Word Forms", chat_id: 456 }
+    end
+
+    before do
+      allow(WordInfo::Picker::Pick).to receive(:call).with(message: "word").and_return(picked_items)
+      allow(MessagePresenter).to receive(:call).with(picked_items).and_return(message_presenter)
+    end
+
+    it { should respond_with_message "Word Forms" }
 
     context "when word is not found" do
-      before { allow(Words::WordInfo).to receive(:new).and_raise(WordNotFoundError) }
+      let(:expected_message) do
+        { parse_mode: "HTML", text: "The word was not found :(", chat_id: 456 }
+      end
+
+      before { allow(WordInfo::Picker::Pick).to receive(:call).with(message: "word").and_raise(WordNotFoundError) }
 
       it { should respond_with_message "The word was not found :(" }
     end
