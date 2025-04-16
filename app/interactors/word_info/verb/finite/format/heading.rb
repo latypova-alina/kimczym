@@ -1,0 +1,23 @@
+module WordInfo
+  module Verb
+    module Finite
+      module Format
+        class Heading < WordInfo::Verb::Base
+          def call
+            context.heading = heading
+          end
+
+          private
+
+          def heading
+            "<strong>#{verb_form_translation}</strong>\n\n"
+          end
+
+          def verb_form_translation
+            I18n.t("#{NAME}.#{FINITE_NAME}.name")
+          end
+        end
+      end
+    end
+  end
+end

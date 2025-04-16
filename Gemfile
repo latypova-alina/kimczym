@@ -14,6 +14,7 @@ group :development, :test do
   gem "byebug"
   gem "rspec-rails", "~> 6.1.0"
   gem "rubocop", require: false
+  gem 'factory_bot_rails'
 end
 
 group :development do

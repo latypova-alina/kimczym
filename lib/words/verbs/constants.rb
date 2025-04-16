@@ -25,7 +25,8 @@ module Words
       }.freeze
 
       FIN_JOIN_CONTENTS = {
-        "sg" => %w[sg pl]
+        "fin.sg" => ["fin.sg", "fin.pl"],
+        "fin.pl" => ["fin.sg", "fin.pl"]
       }.freeze
 
       BUTTON_KEYS_MATCHERS = {
