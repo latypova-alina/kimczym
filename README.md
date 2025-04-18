@@ -74,6 +74,12 @@ Perfect for:
 
 ---
 
+## 🖼️ Screenshots
+
+![Alt text](https://kimczym.s3.us-west-2.amazonaws.com/screen.jpg "Kimczym Screenshot")
+
+---
+
 ## 🛠️ Running Locally
 
 If you want to run this bot on your own machine:
