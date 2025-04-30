@@ -4,7 +4,7 @@ module WordInfo
       class Filter < Base
         include Interactor
 
-        delegate :base_item, :form_name, to: :context
+        delegate :form_name, to: :context
 
         def call
           context.items.select! do |item|
