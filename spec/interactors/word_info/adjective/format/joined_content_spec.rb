@@ -1,4 +1,4 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe WordInfo::Adjective::Format::JoinedContent do
   let(:processed_items) { [build(:adjective), build(:adjective, :feminine)] }
@@ -7,7 +7,7 @@ RSpec.describe WordInfo::Adjective::Format::JoinedContent do
   let(:expected_result) do
     <<~HTML.strip
       <strong>Stopień równy / Liczba pojedyncza / Rodzaj męski osobowy</strong>
-      
+
       <strong>Mianownik (jaki?)</strong> dobry
       <strong>Dopełniacz (jakiego?)</strong> dobrego
       <strong>Celownik (jakiemu?)</strong> dobremu
@@ -15,9 +15,9 @@ RSpec.describe WordInfo::Adjective::Format::JoinedContent do
       <strong>Narzędnik (z jakim?)</strong> dobrym
       <strong>Miejscownik (o jakim?)</strong> dobrym
       <strong>Wołacz (jaki?)</strong> dobry
-      
+
       <strong>Stopień równy / Liczba pojedyncza / Rodzaj żeński</strong>
-      
+
       <strong>Mianownik (jaka?)</strong> dobra
       <strong>Dopełniacz (jakiej?)</strong> dobrej
       <strong>Celownik (jakiej?)</strong> dobrej
@@ -28,9 +28,9 @@ RSpec.describe WordInfo::Adjective::Format::JoinedContent do
     HTML
   end
 
-  subject(:context) { described_class.call(processed_items: processed_items) }
+  subject(:context) { described_class.call(processed_items:) }
 
-  describe '.call' do
+  describe ".call" do
     it "sets the correct formatted_text" do
       expect(context.formatted_text).to eq(expected_result)
     end

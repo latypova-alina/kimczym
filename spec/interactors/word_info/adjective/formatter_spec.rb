@@ -11,13 +11,13 @@ RSpec.describe WordInfo::Adjective::Formatter do
   before do
     allow(WordInfo::Adjective::Format::JoinedContent).to receive(:call)
       .with(processed_items:)
-      .and_return(double(formatted_text: formatted_text))
+      .and_return(double(formatted_text:))
   end
 
   describe ".call" do
     it "sets formatted_text on context using JoinedContent" do
       result = subject
-      
+
       expect(result.formatted_text).to eq(formatted_text)
     end
   end

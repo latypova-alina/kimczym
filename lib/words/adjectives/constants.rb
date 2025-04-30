@@ -1,3 +1,4 @@
+# rubocop:disable Metrics/ModuleLength
 module Words
   module Adjectives
     module Constants
@@ -159,3 +160,4 @@ module Words
     end
   end
 end
+# rubocop:enable Metrics/ModuleLength
