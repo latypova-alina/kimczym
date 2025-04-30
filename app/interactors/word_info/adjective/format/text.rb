@@ -5,7 +5,7 @@ module WordInfo
         delegate :item, to: :context
 
         def call
-          context.text = heading << body
+          context.text = heading + body
         end
 
         private

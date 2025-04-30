@@ -13,7 +13,7 @@ module WordInfo
       def call
         context.form_name ||= base_item["form"].split(":")[0]
 
-        corresponding_class&.call(items:, form_name:, default_item:)
+        corresponding_class&.call(items:, form_name:)
       end
 
       private

@@ -16,8 +16,6 @@ module WordInfo
           def parsed_case
             CaseParser.call(
               word:,
-              number:,
-              gender:,
               grammatical_case:
             ).processed_word
           end
