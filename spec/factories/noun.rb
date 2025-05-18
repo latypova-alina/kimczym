@@ -1,8 +1,7 @@
 FactoryBot.define do
   factory :noun do
     number { "sg" }
-    gender { "m1" }
-    key_name { "#{number}.#{gender}" }
+    key_name { "#{number}" }
 
     nom { "kot" }
     gen { "kota" }
